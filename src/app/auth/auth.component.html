@@ -1,0 +1,114 @@
+<div class="limiter">
+  <div class="container-login">
+    <mat-card>
+      <div *ngIf="isResultsLoading" class="mat-elevation-z8">
+        <div class="loading-shade">
+          <mat-spinner color="accent"></mat-spinner>
+        </div>
+      </div>
+      <mat-card-title>{{ title }}</mat-card-title>
+
+      <mat-card-content>
+        <form
+          class="form-container"
+          [formGroup]="authForm"
+          novalidate
+          (ngSubmit)="onSubmit()"
+        >
+          <!-- {{ this.authForm.value | json }} -->
+          <mat-form-field color="accent">
+            <input matInput placeholder="Email" formControlName="email" />
+            <mat-error
+              *ngIf="
+                authForm.controls.email.invalid &&
+                authForm.controls.email.touched
+              "
+            >
+              Email is required
+            </mat-error>
+          </mat-form-field>
+          <mat-form-field color="accent">
+            <input
+              matInput
+              placeholder="Password"
+              formControlName="password"
+              type="password"
+            />
+            <mat-error
+              *ngIf="
+                authForm.controls.password.invalid &&
+                authForm.controls.password.touched
+              "
+            >
+              Password is required
+            </mat-error>
+          </mat-form-field>
+          <div>
+            <button
+              class="btn-block"
+              [disabled]="!authForm.valid"
+              mat-raised-button
+              type="submit"
+              color="accent"
+            >
+              {{ title }}
+            </button>
+            <!-- <button mat-raised-button (click)="googleAuthHandler()">
+              Google
+            </button> -->
+            <!-- above code gives CORS error -->
+            <!-- <a href="http://localhost:3000/api/auth/google" mat-button
+              >Google</a
+            > -->
+            <!-- After adding proxy added below code -->
+            <a
+              href="/api/auth/google"
+              class="btn btn-social btn-block btn-google"
+              mat-button
+            >
+              <i class="fa fa-google"></i>
+              Login with Google</a
+            >
+            <a
+              href="/api/auth/google"
+              class="btn btn-social btn-block btn-twitter"
+              mat-button
+            >
+              <i class="fa fa-twitter"></i>Login with Twitter</a
+            >
+            <!-- TODO ::  implement  twitter authentication  -->
+            <a
+              href="/api/auth/google"
+              class="btn btn-social btn-block btn-github"
+              mat-button
+              ><i class="fa fa-github"></i>Login with Github</a
+            >
+            <!-- TODO ::  implement  github authentication  -->
+          </div>
+        </form>
+      </mat-card-content>
+      <div class="alternative" *ngIf="title === 'Login'">
+        <p>Don't have an account?</p>
+        <button
+          mat-raised-button
+          class="btn-block"
+          color="accent"
+          [routerLink]="['/signup']"
+        >
+          Signup
+        </button>
+      </div>
+      <div class="alternative" *ngIf="title === 'Signup'">
+        <p>Have an account?</p>
+        <button
+          mat-raised-button
+          class="btn-block"
+          color="accent"
+          [routerLink]="['/login']"
+        >
+          Login
+        </button>
+      </div>
+    </mat-card>
+  </div>
+</div>

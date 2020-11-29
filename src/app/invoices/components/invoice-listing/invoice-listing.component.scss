@@ -1,0 +1,43 @@
+.menu-bar {
+  position: absolute;
+  right: 60px;
+  color: rgb(255, 255, 255);
+  background-color: #ff4081;
+}
+/* Structure */
+.table-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 300px;
+  position: relative;
+}
+
+// .table-header {
+//   min-height: 64px;
+//   padding: 8px 24px 0;
+// }
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.mat-table {
+  overflow: auto;
+  max-height: 500px;
+}
+.spinner-margin {
+  margin: 0 10px;
+}
+.loading-shade {
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 56px;
+  right: 0;
+  background: rgba(0, 0, 0, 0.15);
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
